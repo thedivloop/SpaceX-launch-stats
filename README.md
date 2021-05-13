@@ -65,7 +65,7 @@ When graphiql is set to **true** in the app.use(), the tool can be access on the
 }
 ```
 
-**Get a launches**
+**Get launches**
 
 ```
 {
@@ -81,10 +81,37 @@ When graphiql is set to **true** in the app.use(), the tool can be access on the
 }
 ```
 
+# Creating the FrontEnd
+
+## Initialization
+
+From the main folder:
+
+```bash
+npx create-react-app client
+npm i concurrently
+```
+
+## Apollo GraphQL
+
+```bash
+npm install @apollo/client graphql
+```
+
+Modifications are required due to Apollo V3.
+
+```javascript
+const client = new ApolloClient({
+  uri: "http://localhost:5000/grapql",
+  cache: new InMemoryCache(),
+});
+```
+
 # Links and references
 
 https://github.com/graphql/express-graphql
 https://github.com/r-spacex/SpaceX-API
+https://www.apollographql.com/docs/react/get-started/
 
 API V4: GET https://api.spacexdata.com/v4/launches/
 
@@ -93,6 +120,8 @@ API V4: GET https://api.spacexdata.com/v4/launches/
 ## Graphql Github
 
 ### Git commands
+
+**Initialize git**
 
 ````bash
 echo "# SpaceX-launch-stats" >> README.md
@@ -103,3 +132,16 @@ git branch -M main
 git remote add origin git@github.com:thedivloop/SpaceX-launch-stats.git
 git push -u origin main```
 ````
+
+**Remove node modules**
+
+```
+git rm -r --cached node_modules
+```
+
+**Add to .gitignore**
+
+```
+node_modules/
+/client
+```
