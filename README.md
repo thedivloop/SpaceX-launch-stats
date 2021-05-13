@@ -107,11 +107,33 @@ const client = new ApolloClient({
 });
 ```
 
+Function component to handle the query:
+
+```javascript
+const Launches = () => {
+  const { loading, error, data } = useQuery(LAUNCHES_QUERY);
+
+  return (
+    <div>
+      <h1 className="display-4 my-3">Launches</h1>
+      {data && (
+        <>
+          {data.launches.map((launch) => (
+            <LaunchItem key={launch.flight_number} launch={launch} />
+          ))}
+        </>
+      )}
+    </div>
+  );
+};
+```
+
 # Links and references
 
 https://github.com/graphql/express-graphql
 https://github.com/r-spacex/SpaceX-API
 https://www.apollographql.com/docs/react/get-started/
+https://www.howtographql.com/react-apollo/2-queries-loading-links/
 
 API V4: GET https://api.spacexdata.com/v4/launches/
 

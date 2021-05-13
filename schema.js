@@ -61,9 +61,8 @@ const RootQuery = new GraphQLObjectType({
         launch : {
             type: LaunchType,
             args: {
-                id: {
-                    type: GraphQLString
-                }
+                id: {type: GraphQLString},
+                //flight_number: {type: GraphQLInt}
             },
             resolve(parent,args) {
                 return axios
